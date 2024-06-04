@@ -10,7 +10,7 @@ camera = pco_panda42_bi.Camera(verbose=True)
 frames = 1000
 camera.apply_settings(frames, 100, 'min', 'max', 'binary+ASCII')
 
-jitter_time_us = 2000 # how much slop is needed between triggers? 2000us?
+jitter_time_us = 1000 # how much slop is needed between triggers? 1000us?
 jitter_px = max(ao.s2p(1e-6 * jitter_time_us), 1)
 rolling_px = ao.s2p(1e-6 * camera.rolling_time_us)
 exposure_px = ao.s2p(1e-6 * camera.exposure_us)
