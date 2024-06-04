@@ -333,7 +333,8 @@ class Camera:
         self.height_px = self.roi_px['bottom'] - self.roi_px['top'] + 1
         self.width_px =  self.roi_px['right'] - self.roi_px['left'] + 1
         self.bytes_per_image = 2 * self.height_px * self.width_px # 16 bit
-        self.rolling_time_us = self.line_time_us * (self.height_px / 2)
+        # rolls top to bottom:
+        self.rolling_time_us = self.line_time_us * self.height_px
         if self.very_verbose:
             print("%s:  = %s"%(self.name, self.roi_px))
         return self.roi_px
