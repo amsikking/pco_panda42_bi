@@ -11,6 +11,7 @@ class Camera:
     def __init__(self,
                  name='PCO.panda4.2_bi',
                  cameras=1,
+                 handle=None,
                  verbose=True,
                  very_verbose=False):
         assert cameras == 1, 'currently only 1 camera supported'
@@ -19,8 +20,11 @@ class Camera:
         self.very_verbose = very_verbose
         if self.verbose: print("%s: opening..."%self.name)
         try:
-            self.handle = C.c_void_p(0)
-            dll.open_camera(self.handle, 0)
+            if handle is None:
+                self.handle = C.c_void_p(0)
+                dll.open_camera(self.handle, 0)
+            else:
+                self.handle = handle
             assert self.handle.value is not None
         except:
             print("%s: failed to open;"%self.name)
