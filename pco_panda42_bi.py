@@ -885,7 +885,7 @@ if __name__ == '__main__':
         n_blank = num_img - np.count_nonzero(images.max(axis=(1, 2)))
         if n_blank > 0:
             blank_frames += n_blank
-            print('%d blank frames received...'%blank_frames)
+            print('%d blank frames received...'%n_blank)
     average_latency_ms = total_latency_ms / num_acquisitions
     print("\n -> total blank frames received = %i"%blank_frames)
     print(" -> average latency (ms) = %0.6f"%average_latency_ms)
