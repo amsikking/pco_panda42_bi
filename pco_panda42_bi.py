@@ -314,7 +314,7 @@ class Camera:
             print("%s: setting exposure time (us) = %08i (delay=%08i)"%(
                 self.name, exposure_us, delay_us))
         assert type(exposure_us) is int and type(delay_us) is int
-        assert 1e2 <= exposure_us <= 1e7, 'exposure %i out of range'%exposure_us
+        assert 1e2 <= exposure_us <= 5e5, 'exposure %i out of range'%exposure_us
         assert 0 <= delay_us <= 1e6, 'delay %i out of range'%delay_us
         dll.set_delay_exposure_time(
             self.handle, delay_us, exposure_us, 1, 1) # 1 -> us
